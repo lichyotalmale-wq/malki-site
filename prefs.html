@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>העדפות דיוור | מלכי אלפרוביץ</title>
+<link rel="icon" href="/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&amp;family=Varela+Round&amp;display=swap" rel="stylesheet">
+<style>
+:root{--ink:#3B2925;--soft:#5E4840;--mute:#7A6259;--rose:#9A5E4A;--line:#EFE1D8;--peach:#F3E6DE;--card:#FFFDFB}
+*{box-sizing:border-box}
+body{margin:0;background:#FAF6F1;color:var(--ink);font-family:'Varela Round',Arial,sans-serif;font-size:17px;line-height:1.6}
+a{color:#8E5543}
+header{max-width:720px;margin:0 auto;padding:18px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink)}
+.brand img{width:46px;height:46px;object-fit:cover;object-position:50% 30%;border-radius:50%;border:1px solid #E2C6B7;background:#fff}
+.brand span{font-family:Fredoka,sans-serif;font-weight:500;font-size:20px}
+.home{font-size:15px;text-decoration:none;color:var(--ink);background:var(--card);border:1px solid #E2C6B7;padding:8px 16px;border-radius:999px}
+main{max-width:560px;margin:0 auto;padding:8px 16px 64px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:28px;padding:32px 24px;box-shadow:0 20px 50px rgba(90,55,45,.06)}
+h1{font-family:Fredoka,sans-serif;font-weight:500;font-size:30px;line-height:1.25;margin:0 0 8px}
+.sub{margin:0 0 20px;color:var(--mute);font-size:15px}
+.sub b{direction:ltr;unicode-bidi:embed;color:var(--soft)}
+label.l{display:flex;align-items:center;gap:12px;padding:14px 16px;margin:0 0 10px;background:var(--peach);border-radius:16px;cursor:pointer;font-size:17px}
+label.l input{width:22px;height:22px;accent-color:var(--rose);flex:none;margin:0}
+.hint{font-size:14px;color:var(--mute);margin:4px 0 18px}
+.btn{font-family:Fredoka,sans-serif;font-weight:500;font-size:18px;border:0;cursor:pointer;background:linear-gradient(135deg,#B57560,#9A5E4A);color:#fff;padding:14px 30px;border-radius:999px;width:100%;box-shadow:0 12px 26px rgba(154,94,74,.25)}
+.btn[disabled]{opacity:.6;cursor:default}
+.out{display:block;margin:22px auto 0;background:none;border:0;color:#A0412A;font:inherit;font-size:15px;text-decoration:underline;cursor:pointer}
+.confirm{margin-top:18px;padding:16px;border:1px solid #E6C2B6;border-radius:16px;background:#FFF7F3;text-align:center}
+.confirm p{margin:0 0 12px}
+.row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.ghost{font:inherit;font-size:16px;background:var(--card);border:1px solid #D9B6A5;color:var(--ink);padding:10px 22px;border-radius:999px;cursor:pointer}
+.danger{font:inherit;font-size:16px;background:#A0412A;border:0;color:#fff;padding:10px 22px;border-radius:999px;cursor:pointer}
+.msg{text-align:center}
+.msg .ic{font-size:40px;line-height:1;margin-bottom:10px}
+.fallback{margin-top:22px;padding-top:16px;border-top:1px solid var(--line);font-size:14px;color:var(--mute);text-align:center}
+.join{font-size:15px;color:var(--mute);margin:-8px 0 20px}
+</style>
+<script src="/shabbat.js"></script>
+</head>
+<body>
+<header>
+<a class="brand" href="/"><img src="logo.png" alt=""><span>מלכי אלפרוביץ</span></a>
+<a class="home" href="/">לאתר ←</a>
+</header>
+<main>
+<div class="card" id="box" aria-live="polite"><p class="msg">רגע, טוענת את ההעדפות שלך…</p></div>
+<p class="fallback">לא מצליחה לשמור? אפשר להשיב לכל מייל שקיבלת עם המילה <b>"הסרה"</b>, או למשל <b>"להסיר מ-CBT"</b>, ואטפל בזה בעצמי.</p>
+</main>
+<script>
+(function () {
+  var API = 'https://script.google.com/macros/s/AKfycbz3rMYCIxHQuo4hkiiHKEVAuQ_nszwJBhccpDOiPMbiR5OxadIP7Lf-8mfIM1ImYFCKOQ/exec';
+  var q = new URLSearchParams(location.search), t = q.get('t') || '', m = q.get('m') || '';
+  var box = document.getElementById('box');
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function call(params) {
+    var u = new URLSearchParams(params); u.set('f', 'j'); u.set('t', t); u.set('m', m);
+    return fetch(API + '?' + u.toString(), { credentials: 'omit' }).then(function (r) { return r.json(); });
+  }
+  function msg(icon, title, text) {
+    box.innerHTML = '<div class="msg"><div class="ic">' + icon + '</div><h1>' + title + '</h1>' + (text ? '<p class="sub" style="font-size:17px;color:#5E4840">' + text + '</p>' : '') +
+      '<p style="margin:18px 0 0"><a class="ghost" style="text-decoration:none;display:inline-block" href="/">חזרה לאתר</a></p></div>';
+  }
+  function fail() { msg('🌿', 'לא הצלחתי לטעון את ההעדפות', 'אפשר להשיב לכל מייל שקיבלת עם המילה "הסרה", ואטפל בזה בעצמי.'); }
+  function removeAll() {
+    call({ a: 'u', c: '1' }).then(function (j) {
+      if (!j.ok) return fail();
+      msg('💛', 'הוסרת מכל הרשימות', 'לא תקבלי ממני יותר מיילים.<br>אם תתחרטי, תמיד אפשר להצטרף מחדש.');
+    }).catch(fail);
+  }
+  function askAll() {
+    var c = document.getElementById('conf');
+    c.innerHTML = '<div class="confirm"><p>להסיר אותך מכל הרשימות? לא תקבלי ממני יותר מיילים.</p><div class="row"><button class="danger" id="yes" type="button">כן, להסיר</button><button class="ghost" id="no" type="button">לא, תודה</button></div></div>';
+    document.getElementById('yes').onclick = function () { this.disabled = true; removeAll(); };
+    document.getElementById('no').onclick = function () { c.innerHTML = ''; };
+  }
+  function render(j) {
+    if (j.removed) return msg('🌿', 'את כבר לא ברשימה', 'לא יישלחו אלייך יותר מיילים.');
+    var h = '<h1>אילו מיילים תרצי לקבל?</h1><p class="sub">העדפות עבור <b>' + esc(j.email) + '</b></p>' +
+      '<p class="join">לא את? קיבלת את המייל מחברה? <a href="/quiz.html">להצטרפות לרשימה שלך</a></p>';
+    if (j.lists && j.lists.length) {
+      h += '<form id="f">' + j.lists.map(function (x) {
+        return '<label class="l"><input type="checkbox" name="l" value="' + esc(x.name) + '" checked>' + esc(x.label) + '</label>';
+      }).join('') + '<p class="hint">הורידי את הסימון מתכנים שאת לא רוצה לקבל</p><button class="btn" type="submit">שמירת ההעדפות</button></form>';
+    }
+    h += '<button class="out" type="button" id="all">הסירי אותי מכל הרשימות</button><div id="conf"></div>';
+    box.innerHTML = h;
+    document.getElementById('all').onclick = askAll;
+    var f = document.getElementById('f');
+    if (f) f.onsubmit = function (e) {
+      e.preventDefault();
+      var btn = f.querySelector('.btn'); btn.disabled = true; btn.textContent = 'שומרת…';
+      var p = new URLSearchParams({ a: 'u', c: '2' });
+      Array.prototype.forEach.call(f.querySelectorAll('input:checked'), function (i) { p.append('l', i.value); });
+      var u = new URLSearchParams(p); u.set('f', 'j'); u.set('t', t); u.set('m', m);
+      fetch(API + '?' + u.toString(), { credentials: 'omit' }).then(function (r) { return r.json(); }).then(function (r) {
+        if (!r.ok) return fail();
+        if (r.removedAll) return msg('💛', 'הוסרת מכל הרשימות', 'לא תקבלי ממני יותר מיילים.<br>אם תתחרטי, תמיד אפשר להצטרף מחדש.');
+        if (!r.removed || !r.removed.length) return msg('💛', 'ההעדפות נשמרו', 'לא השתנה כלום, ותמשיכי לקבל את כל התכנים שבחרת.');
+        msg('💛', 'ההעדפות נשמרו', 'הוסרת מ:<br><b>' + r.removed.map(esc).join('<br>') + '</b><br><br>את שאר התכנים תמשיכי לקבל כרגיל.');
+      }).catch(fail);
+    };
+  }
+  if (!t) return msg('🌿', 'הקישור לא שלם', 'כדאי ללחוץ שוב על הקישור שבתחתית המייל, או להשיב למייל עם המילה "הסרה".');
+  call({ a: 'p' }).then(function (j) { if (!j.ok) return j.error === 'notfound' ? msg('🌿', 'לא מצאתי את הכתובת', 'אפשר להשיב לאחד המיילים, ואטפל בזה בעצמי.') : fail(); render(j); }).catch(fail);
+})();
+</script>
+</body>
+</html>

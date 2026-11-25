@@ -1,0 +1,757 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>דאבל מאץ׳ | אמא בדאבל</title>
+<link rel="icon" href="/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+body{margin:0;min-height:100vh;font-family:Heebo,Arial,sans-serif;background:radial-gradient(circle at 15% 5%,rgba(255,238,230,.75),rgba(0,0,0,0) 30%),radial-gradient(circle at 90% 10%,rgba(255,248,241,.82),rgba(0,0,0,0) 34%),linear-gradient(135deg,#FFFAF7 0%,#FDECE5 58%,#FFF8F2 100%);background-attachment:fixed}
+#doubleMatchTool .dm-shell { max-width: 1080px; margin: 0px auto; }
+.dm-shell { position: relative; z-index: 1; }
+.dm-hero { text-align: center; padding: 30px 18px 24px; }
+.dm-logo { width: 150px; max-width: 44%; display: block; margin: 0px auto 14px; filter: drop-shadow(rgba(80, 48, 40, 0.12) 0px 10px 20px); }
+.dm-kicker { display: inline-flex; align-items: center; gap: 8px; padding: 7px 14px; border: 1px solid var(--line); background: rgba(255, 255, 255, 0.72); color: var(--rose2); border-radius: 999px; font-weight: 700; margin-bottom: 12px; }
+.dm-title { font-size: clamp(34px, 6vw, 62px); line-height: 1; margin: 8px 0px; font-weight: 800; letter-spacing: -0.03em; }
+.dm-subtitle { font-size: clamp(21px, 3.2vw, 32px); line-height: 1.25; font-weight: 700; margin: 10px auto; max-width: 760px; }
+.dm-copy { font-size: 18px; line-height: 1.85; color: var(--muted); max-width: 780px; margin: 14px auto 0px; }
+.dm-card { background: var(--white); border: 1px solid rgba(234, 213, 205, 0.9); box-shadow: rgba(107, 68, 58, 0.12) 0px 18px 50px; backdrop-filter: blur(6px); border-radius: 26px; padding: 24px; margin: 18px 0px; }
+.dm-progress { height: 10px; background: rgb(242, 221, 213); border-radius: 99px; overflow: hidden; margin: 4px 0px 18px; }
+.dm-progress > span { display: block; height: 100%; width: 0%; background: linear-gradient(90deg, rgb(215, 160, 148), rgb(169, 110, 100)); border-radius: 99px; transition: width 0.35s; }
+.dm-step { display: none; animation: 0.35s ease 0s 1 normal both running dmFade; }
+.dm-step.active { display: block; }
+.dm-q-title { font-size: 25px; margin: 0px 0px 8px; font-weight: 800; }
+.dm-help { color: var(--muted); margin: 0px 0px 18px; line-height: 1.7; }
+.dm-field { width: 100%; border: 1px solid var(--line); background: rgb(255, 253, 250); border-radius: 18px; padding: 15px 16px; font: inherit; color: var(--ink); outline: none; transition: 0.2s; }
+textarea.dm-field { min-height: 120px; resize: vertical; }
+.dm-field:focus { border-color: var(--rose); box-shadow: rgba(199, 131, 120, 0.14) 0px 0px 0px 4px; }
+.dm-options { display: grid; gap: 12px; }
+.dm-option { cursor: pointer; display: grid; grid-template-columns: 26px 1fr; gap: 12px; align-items: start; padding: 15px 16px; border: 1px solid var(--line); background: rgb(255, 253, 250); border-radius: 20px; transition: 0.2s; }
+.dm-option:hover { transform: translateY(-2px); border-color: rgb(217, 173, 163); box-shadow: rgba(107, 68, 58, 0.08) 0px 12px 26px; }
+.dm-option input { width: 18px; height: 18px; margin-top: 3px; accent-color: var(--rose2); }
+.dm-option strong { display: block; font-size: 17px; margin-bottom: 3px; }
+.dm-option small { display: inline; color: inherit; font-size: inherit; font-weight: 700; line-height: inherit; }
+.dm-nav { display: flex; gap: 12px; justify-content: space-between; flex-wrap: wrap; margin-top: 22px; }
+.dm-btn { border: 0px; cursor: pointer; font-style: inherit; font-variant: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; font-optical-sizing: inherit; font-size-adjust: inherit; font-kerning: inherit; font-feature-settings: inherit; font-variation-settings: inherit; font-language-override: inherit; font-weight: 800; border-radius: 999px; padding: 13px 24px; background: linear-gradient(135deg, rgb(199, 131, 120), rgb(159, 103, 95)); color: rgb(255, 255, 255); box-shadow: rgba(159, 103, 95, 0.25) 0px 14px 26px; transition: 0.2s; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 8px; }
+.dm-btn:hover { transform: translateY(-2px); box-shadow: rgba(159, 103, 95, 0.3) 0px 18px 32px; }
+.dm-btn.secondary { background: rgb(255, 255, 255); color: var(--rose2); border: 1px solid var(--line); box-shadow: none; }
+.dm-note { display: flex; align-items: flex-start; gap: 10px; background: rgb(255, 247, 243); border: 1px solid var(--line); border-radius: 20px; padding: 14px; color: var(--muted); line-height: 1.65; margin-top: 16px; }
+.dm-icon { width: 22px; height: 22px; flex: 0 0 22px; color: var(--rose2); }
+.dm-error { display: none; color: rgb(159, 61, 53); background: rgb(255, 240, 237); border: 1px solid rgb(240, 199, 191); border-radius: 16px; padding: 10px 13px; margin-top: 14px; }
+.dm-result { display: none; position: relative; overflow: hidden; }
+.dm-result.show { display: block; animation: 0.45s ease 0s 1 normal both running dmFade; }
+.dm-balloons { display: none !important; }
+.dm-result h2 { font-size: 34px; margin: 0px 0px 12px; font-weight: 800; }
+.dm-badges { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 18px 0px; }
+.dm-badge { background: rgb(255, 248, 242); border: 1px solid var(--line); border-radius: 18px; padding: 12px; text-align: center; }
+.dm-badge strong { display: block; font-size: 23px; color: var(--rose2); }
+.dm-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.dm-panel { background: rgb(255, 253, 250); border: 1px solid var(--line); border-radius: 22px; padding: 18px; line-height: 1.75; }
+.dm-panel h3 { margin: 0px 0px 8px; font-size: 21px; }
+.dm-panel ul { margin: 8px 0px 0px; padding: 0px 20px 0px 0px; }
+.dm-final-cta { margin-top: 20px; text-align: center; background: linear-gradient(135deg, rgb(255, 247, 242), rgb(247, 223, 216)); border: 1px solid var(--line); border-radius: 24px; padding: 22px; }
+.dm-final-cta .dm-btn { font-size: 18px; padding: 15px 26px; text-decoration: underline; text-underline-offset: 4px; }
+.dm-mail { margin-top: 12px; color: var(--muted); }
+.dm-mail a { color: var(--rose2); font-weight: 800; }
+@media (max-width: 760px) {
+  #doubleMatchTool { padding: 16px; border-radius: 20px; }
+  .dm-card { padding: 18px; border-radius: 22px; }
+  .dm-grid, .dm-badges { grid-template-columns: 1fr; }
+  .dm-nav { flex-direction: column-reverse; }
+  .dm-btn { width: 100%; }
+}
+#doubleMatchTool .dm-option small { font-size: inherit !important; line-height: inherit !important; color: inherit !important; display: inline !important; }
+#doubleMatchTool .dm-option strong { font-size: inherit !important; line-height: 1.55 !important; }
+
+</style>
+<script src="/shabbat.js"></script>
+</head>
+<body>
+<div class="dm-shell">
+    <section class="dm-hero">
+      <img class="dm-logo" src="/dm-logo.webp" alt="אמא בדאבל">
+      <div class="dm-kicker">
+        <svg class="dm-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3.5c2.6 4.4 5.2 7 9.5 8.5-4.3 1.5-6.9 4.1-9.5 8.5C9.4 16.1 6.8 13.5 2.5 12 6.8 10.5 9.4 7.9 12 3.5Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"></path></svg>
+        כלי אבחון שיווקי קצר
+      </div>
+      <h1 class="dm-title">דאבל מאצ׳</h1>
+      <div class="dm-subtitle">אל תפרסמי לפני שתדעי אם את מדברת לאמא הנכונה.</div>
+      <p class="dm-copy">מכירה את התסכול של להשקיע בפרסום ולקבל פניות מלקוחות שרק שואלות כמה עולה, או פשוט לא מתאימות לך? קמפיין מנצח מתחיל מהבנה עמוקה של הלקוחה שלך, האמא הספציפית שקמה הבוקר עם צורך שהמוצר שלך פותר.</p>
+      <p class="dm-copy">ספרי לנו קצת על הבשורה שלך, ותגלי מי הלקוחה המדויקת שלך, ומהן המילים שיגרמו לה לסמוך עלייך ולבחור בך.</p>
+      <button class="dm-btn" type="button" onclick="dmStart()">בואי נמצא את המאצ׳ שלך</button>
+    </section>
+
+    <section id="dmFormCard" class="dm-card" style="display:none">
+      <div class="dm-progress"><span id="dmProgress"></span></div>
+
+      <form id="dmForm">
+        <div class="dm-step active" data-step="0">
+          <h2 class="dm-q-title">מהו המוצר או השירות שתרצי לשים במרכז הבמה בפרסום הקרוב?</h2>
+          <p class="dm-help">כתבי במשפט פשוט, בלי צורך בניסוח שיווקי מושלם.</p>
+          <input class="dm-field" name="product" required="" placeholder="לדוגמה, ייעוץ שינה, צילומי משפחה, סדנת יצירה, קייטרינג חלבי">
+        </div>
+
+        <div class="dm-step" data-step="1">
+          <h2 class="dm-q-title">כדי שנוכל להתאים לך את משפך החשיפה המדויק, באיזו סביבת מחיר אנחנו פועלות?</h2>
+          <div class="dm-options">
+            <label class="dm-option"><input type="radio" name="price" value="low" required=""><span><strong>נגיש ויומיומי</strong><small>עד 200 ₪</small></span></label>
+            <label class="dm-option"><input type="radio" name="price" value="mid"><span><strong>ביניים, רכישה מחושבת</strong><small>200 עד 500 ₪</small></span></label>
+            <label class="dm-option"><input type="radio" name="price" value="high"><span><strong>השקעה משמעותית</strong><small>500 עד 1,500 ₪</small></span></label>
+            <label class="dm-option"><input type="radio" name="price" value="premium"><span><strong>שירות פרימיום או ליווי עומק</strong><small>1,500 ₪ ומעלה</small></span></label>
+          </div>
+        </div>
+
+        <div class="dm-step" data-step="2">
+          <h2 class="dm-q-title">מהי הבשורה שלך?</h2>
+          <p class="dm-help">ספרי בכמה מילים על המוצר או השירות שאת מציעה, ומה משתנה אצל הלקוחה אחרי שהיא קונה ממך.</p>
+          <textarea class="dm-field" name="promise" required="" placeholder="לדוגמה, אני עוזרת לאמהות להגיע לערב רגוע יותר בבית, בלי מלחמות ובלי רגשות אשמה"></textarea>
+        </div>
+
+        <div class="dm-step" data-step="3">
+          <h2 class="dm-q-title">יש לך כבר טיוטה, מודעה או פוסט שכתבת בעבר?</h2>
+          <p class="dm-help">הדביקי כאן. זה לא חובה, אבל אם תדביקי נקבל אבחון אישי יותר.</p>
+          <textarea class="dm-field" name="draft" placeholder="אפשר להדביק כאן טקסט קיים"></textarea>
+        </div>
+
+        <div class="dm-step" data-step="4">
+          <h2 class="dm-q-title">באיזה שלב אימהי נמצאת הלקוחה האידיאלית שלך?</h2>
+          <p class="dm-help">אפשר לסמן כמה אפשרויות.</p>
+          <div class="dm-options">
+            <label class="dm-option"><input type="checkbox" name="stage" value="pregnancy"><span><strong>אמהות בהריון</strong></span></label>
+            <label class="dm-option"><input type="checkbox" name="stage" value="baby"><span><strong>אמהות לתינוקות</strong></span></label>
+            <label class="dm-option"><input type="checkbox" name="stage" value="toddlers"><span><strong>אמהות לפעוטות וילדי גן</strong></span></label>
+            <label class="dm-option"><input type="checkbox" name="stage" value="school"><span><strong>אמהות לילדי יסודי</strong></span></label>
+            <label class="dm-option"><input type="checkbox" name="stage" value="teens"><span><strong>אמהות למתבגרים</strong></span></label>
+            <label class="dm-option"><input type="checkbox" name="stage" value="all"><span><strong>המוצר שלי חוצה גילאים, פונה לכלל האמהות</strong></span></label>
+          </div>
+        </div>
+
+        <div class="dm-step" data-step="5">
+          <h2 class="dm-q-title">ביום שאחרי הפרסום, איזו תוצאה הכי בוער לך להשיג?</h2>
+          <div class="dm-options">
+            <label class="dm-option"><input type="radio" name="goal" value="many" required=""><span><strong>גל של פניות</strong><small>לידים עכשיו ומהר</small></span></label>
+            <label class="dm-option"><input type="radio" name="goal" value="quality"><span><strong>סינון חכם</strong><small>פחות פניות, אבל שיהיו בשלות ומדויקות</small></span></label>
+            <label class="dm-option"><input type="radio" name="goal" value="premium"><span><strong>לקוחות פרימיום</strong><small>לקוחות שמעריכות איכות ומוכנות להשקיע</small></span></label>
+            <label class="dm-option"><input type="radio" name="goal" value="urgent"><span><strong>סגירת פינה</strong><small>ללקוחה שחייבת פתרון כאן ועכשיו</small></span></label>
+            <label class="dm-option"><input type="radio" name="goal" value="authority"><span><strong>בניית אוטוריטה</strong><small>שיסתכלו עליי כסמכות בנישה</small></span></label>
+            <label class="dm-option"><input type="radio" name="goal" value="community"><span><strong>קהילה וחיבור אישי</strong><small>לייצר חום סביב המותג שלי</small></span></label>
+          </div>
+        </div>
+
+        <div class="dm-step" data-step="6">
+          <h2 class="dm-q-title">כשאמא צעירה רוכשת את המוצר או השירות שלך, מה היא בעצם קונה?</h2>
+          <div class="dm-options">
+            <label class="dm-option"><input type="radio" name="buying" value="security" required=""><span><strong>הכוונה, הדרכה או ליווי וידיעה שהיא בידיים טובות.</strong></span></label>
+            <label class="dm-option"><input type="radio" name="buying" value="time"><span><strong>חיסכון משמעותי בזמן ואנרגיה בתוך הטירוף של היומיום.</strong></span></label>
+            <label class="dm-option"><input type="radio" name="buying" value="breath"><span><strong>חוויה, פינוק, והזדמנות להשקיע בעצמה.</strong></span></label>
+            <label class="dm-option"><input type="radio" name="buying" value="practical"><span><strong>פתרון פרקטי, יעיל וחסכוני שסוגר לה פינה.</strong></span></label>
+          </div>
+        </div>
+
+        <div class="dm-step" data-step="7">
+          <h2 class="dm-q-title">מהו הטריגר המרכזי שגורם לה לחפש אותך דווקא עכשיו?</h2>
+          <div class="dm-options">
+            <label class="dm-option"><input type="radio" name="trigger" value="style" required=""><span><strong>היא רוצה להרגיש במיטבה, מטופחת ונינוחה, וחשוב לה שהנראות שלה תהיה עדכנית. היא מחפשת שדרוג איכותי, אסתטיקה וסטייל בטוב טעם שייתנו לה הרגשה טובה</strong></span></label>
+            <label class="dm-option"><input type="radio" name="trigger" value="home"><span><strong>היא רוצה שהבית שלה ייראה וירגיש אחרת. היא מחפשת פתרונות שיהפכו את הבית למקום נעים וחלומי שכיף לחיות בו</strong></span></label>
+            <label class="dm-option"><input type="radio" name="trigger" value="kids"><span><strong>יש קושי, אתגר או צורך ספציפי מול הילדים שיושב לה על הלב. היא מחפשת פתרון או הכוונה כדי לתת להם את הכי טוב שיש</strong></span></label>
+            <label class="dm-option"><input type="radio" name="trigger" value="self"><span><strong>הצורך בהתפתחות אישית, מקצועית או עסקית משלה</strong></span></label>
+          </div>
+        </div>
+
+        <div class="dm-step" data-step="8">
+          <h2 class="dm-q-title">מהו החשש הכי גדול שעובר לה בראש לפני שהיא פונה אלייך?</h2>
+          <div class="dm-options">
+            <label class="dm-option"><input type="radio" name="fear" value="price" required=""><span><strong>זה נראה מדהים, אבל אולי זה יקר לי מדי כרגע.</strong></span></label>
+            <label class="dm-option"><input type="radio" name="fear" value="fit"><span><strong>האם זה באמת מותאם אלי ולסגנון של המשפחה שלי?</strong></span></label>
+            <label class="dm-option"><input type="radio" name="fear" value="effort"><span><strong>אין לי ראש לזה עכשיו, זה בטח ידרוש ממני המון מאמץ או זמן.</strong></span></label>
+            <label class="dm-option"><input type="radio" name="fear" value="quality"><span><strong>איך אני יודעת שזה באמת איכותי ויספק את התוצאה המובטחת?</strong></span></label>
+          </div>
+        </div>
+
+        <div class="dm-step" data-step="9">
+          <h2 class="dm-q-title">איך היית רוצה שהאמהות של אמא בדאבל יפגשו את המותג שלך בחודשים הקרובים?</h2>
+          <div class="dm-options">
+            <label class="dm-option"><input type="radio" name="strategy" value="pulse" required=""><span><strong>אני צריכה בוסט חזק וממוקד.</strong><small>יש לי השקה, סייל קרוב או מוצר ספציפי שאני רוצה לדחוף ממש עכשיו.</small></span></label>
+            <label class="dm-option"><input type="radio" name="strategy" value="presence"><span><strong>חשוב לי שיראו אותי שוב ושוב.</strong><small>אני רוצה לבנות נוכחות יציבה, להישאר להן בתודעה ולהפוך לשם מוכר במגזר.</small></span></label>
+            <label class="dm-option"><input type="radio" name="strategy" value="taste"><span><strong>יש לי הרבה ידע וערך לתת.</strong><small>אני רוצה שהלקוחות יכירו את הדרך שלי ויבינו למה אני שונה מאחרות בתחום.</small></span></label>
+            <label class="dm-option"><input type="radio" name="strategy" value="journey"><span><strong>אני רוצה שיחכו לתוכן שלי.</strong><small>המטרה היא לקחת את הקוראות למסע עומק, כדי שיהפוך אותי לסמכות הבלתי מעורערת בתחומי.</small></span></label>
+          </div>
+        </div>
+
+        <div class="dm-error" id="dmError">יש להשלים את השאלה לפני שממשיכים.</div>
+        <div class="dm-nav">
+          <button class="dm-btn secondary" type="button" onclick="dmPrev()">חזרה</button>
+          <button class="dm-btn" type="button" id="dmNextBtn" onclick="dmNext()">המשך</button>
+          <button class="dm-btn" type="button" id="dmSubmitBtn" onclick="dmFinish()" style="display:none">גלי לי מי האמא שלי</button>
+        </div>
+      </form>
+
+      <div class="dm-note">
+        <svg class="dm-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 4v16M4 12h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path><path d="M6.5 6.5l11 11M17.5 6.5l-11 11" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"></path></svg>
+        האבחון לא ממציא תשובה באוויר. הוא עובד לפי מנגנון ניקוד פנימי שמחבר בין מה שהלקוחה שלך קונה באמת, הטריגר שלה, החשש שלה, סביבת המחיר והמטרה העסקית שלך.
+      </div>
+    </section>
+
+
+    <section id="dmRegistration" class="dm-card dm-result">
+      <h2>האבחון שלך מוכן!</h2>
+      <p class="dm-help">עוד רגע תגלי:</p>
+      <div class="dm-register-list" style="max-width:620px;margin:16px auto 22px;text-align:right;line-height:2;font-size:20px;color:var(--ink);">
+        <div>✓ איזה סוג אימהות הפרסום שלך מושך</div>
+        <div>✓ איך להפוך את המסר שלך לשפת הלקוחה</div>
+        <div>✓ מה הטעות השיווקית שכדאי להימנע ממנה</div>
+        <div>✓ ואיזה סוג פרסום במגזין יתאים לך ביותר</div>
+      </div>
+      <h3 style="font-size:28px;margin:18px 0;color:var(--ink);text-align:center;">לאיזה מייל לשלוח את התוצאה?</h3>
+      <form class="dm-rav-form dm-own-form" id="dmLeadForm" novalidate style="max-width:520px;margin:0 auto;padding:8px 0 0;display:grid;gap:12px">
+  <input id="dmLeadName" type="text" placeholder="שם" autocomplete="given-name" aria-label="שם" style="font:inherit;font-size:18px;padding:14px 16px;border:1px solid #d9c3b6;border-radius:14px">
+  <input id="dmLeadEmail" type="email" placeholder="מייל" autocomplete="email" aria-label="מייל" required style="font:inherit;font-size:18px;padding:14px 16px;border:1px solid #d9c3b6;border-radius:14px;direction:ltr;text-align:right">
+  <label style="display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.5;text-align:right"><input id="dmLeadConsent" type="checkbox" style="width:20px;height:20px;margin-top:2px;flex:none"> מאשרת קבלת דיוור ועדכונים מאמא בדאבל, אפשר להסיר בכל עת.</label>
+  <input type="text" name="hp" id="dmHp" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
+  <div id="dmLeadErr" style="color:#A0412A;font-size:15px;min-height:1em"></div>
+  <button class="dm-btn" type="submit" style="width:100%">שלחי לי את התוצאה</button>
+</form>
+    </section>
+
+    <section id="dmResult" class="dm-card dm-result">
+      <h2 id="dmResultTitle"></h2>
+      <p class="dm-help" id="dmResultIntro"></p>
+      <div class="dm-badges" id="dmBadges"></div>
+      <div class="dm-grid" id="dmResultGrid"></div>
+      <div class="dm-final-cta" id="dmStrategyBox"></div>
+      <div class="dm-nav">
+        <button class="dm-btn secondary" type="button" onclick="dmReset()">התחרטתי, בואי נתחיל מחדש</button>
+      </div>
+    </section>
+  </div>
+<script>
+
+(function(){
+  const archetypes = {
+    updated: {
+      name:'אמא מטופחת',
+      label:'ממוקדת נראות, איכות וסטייל',
+      inner:'אני רוצה להרגיש מטופחת ונינוחה. חשוב לי שהנראות שלי תהיה עדכנית, ואני מחפשת שדרוג איכותי כי מגיע לי להרגיש טוב עם עצמי.',
+      motivation:'היא לא קונה רק מוצר או שירות. היא קונה תחושה שהיא נראית טוב, מרגישה במיטבה ובוחרת משהו מוקפד בטוב טעם.',
+      mistake:'לדבר על מפרט טכני, מחיר או פרטים יבשים, במקום לתאר לה איך היא תרגיש אחרי הבחירה, מטופחת, נינוחה, עדכנית ובטוחה בעצמה.',
+      dont:'טיפול פנים בטכנולוגיה מתקדמת או קולקציית בגדים מבד איכותי.',
+      do:'להסתכל במראה ולדעת שהמראה שלך הוא הכי מוקפד, עדכני ומדויק שיש, חוויה איכותית שלא מתפשרת על הטעם הטוב שלך.',
+      secret:'אל תדברי על המפרט הטכני של המוצר. דברי על איך היא תרגיש, ואיך היא תיראה בעיני עצמה. תמכרי לה חיות, פינוק וסטנדרט.',
+      words:['מוקפד','עדכני','בטוב טעם','חוויית פרימיום','להרגיש במיטבך']
+    },
+    practical: {
+      name:'אמא בלבוסטה',
+      label:'ממוקדת מרחב, בית ושגרה',
+      inner:'אני רוצה שהבית שלי ייראה וירגיש אחרת. אני צריכה משהו שיתקתק את העניינים, יחסוך לי כאב ראש ויהפוך את המרחב הזה למקום שנותן לי כוח.',
+      motivation:'היא לא קונה רק מוצר. היא קונה בית נעים יותר, שגרה זורמת יותר ותחושה שהדברים סוף סוף עובדים בשבילה.',
+      mistake:'לדבר על חיסכון בזמן בצורה יבשה, או על פרטי השירות בלבד, במקום לתאר את הרוגע והפנטזיה של בית מתקתק ונעים.',
+      dont:'שירותי עיצוב פנים מקצועיים או קייטרינג לאירועים.',
+      do:'לסגור את הפינה הזו בצורה הכי חכמה, וליהנות מבית נעים, מעוצב וזורם שפשוט כיף להיכנס אליו בסוף היום.',
+      secret:'אל תמכרי לה רק יעילות. תמכרי לה את הרוגע, את הבית החלומי ואת התחושה שיש לה סוף סוף מרחב שנותן לה כוח.',
+      words:['חלומי','מתקתק','לסגור פינה','חכם','מקום שנותן כוח']
+    },
+    investing: {
+      name:'אמא משקיענית',
+      label:'ממוקדת ילדים, חינוך והתפתחות',
+      inner:'יושב לי על הלב הקושי שלו. אני כל כך דואגת ורוצה למצוא את ההכוונה המדויקת כדי לדעת שאני נותנת לו את הטוב ביותר.',
+      motivation:'היא לא קונה רק פתרון. היא קונה ביטחון שהיא עושה נכון עבור הילד שלה, ושהיא נותנת לו בסיס טוב, רוגע והצלחה.',
+      mistake:'לדבר על השיטה, החומר או המקצועיות שלך, בלי להראות לה את רגע הניצחון של הילד ואת השקט הנפשי שלה כאמא.',
+      dont:'אבחון דידקטי או ערכת למידה לפיתוח מיומנויות.',
+      do:'לראות את העיניים שלו נוצצות כשהוא סוף סוף מצליח, ולשחרר את הדאגה כי את יודעת שהוא בידיים הכי טובות.',
+      secret:'דברי אל הדאגה האימהית שלה. אל תחפרי על השיטות שלך. תארי את רגע הניצחון של הילד ואת השקט שלה כאמא.',
+      words:['העיניים נוצצות','בידיים טובות','שקט נפשי','הכי טוב שיש','בסיס חזק']
+    },
+    breath: {
+      name:'אמא מתפתחת',
+      label:'ממוקדת פנימיות, זוגיות והתפתחות',
+      inner:'משהו מרגיש חסר. אני זקוקה להכוונה כדי לחזור לעצמי, למלא את הוואקום ולהחזיר את הניצוץ והקרבה לחיים ולזוגיות שלי.',
+      motivation:'היא לא קונה רק תהליך או ייעוץ. היא קונה חיבור מחדש, ביטחון פנימי, קרבה ותחושה שהיא חוזרת לעצמה.',
+      mistake:'לדבר במושגים מקצועיים קרים, כמו תהליך, כלים או שיטה, בלי לתאר את הרגש החם שאחרי השינוי, הקרבה, ההבנה והביטחון.',
+      dont:'ייעוץ זוגי מקצועי או תהליך העצמה אישית.',
+      do:'התחושה המדהימה של חזרה לעצמך, והרגע הזה שבו הקרבה, ההבנה בעיניים והחיבור האמיתי פשוט חוזרים.',
+      secret:'המטרה שלך היא למכור לה ביטחון וקשר. אל תשתמשי במושגים פסיכולוגיים קרים. תתארי את הרגש החם של אחרי השינוי.',
+      words:['חיבור מחדש','הניצוץ','הבנה בעיניים','ביטחון פנימי','קרבה']
+    }
+  };
+
+  const strategyText = {
+    pulse: {
+      title:'המהלך הבא שלך: מודעת פרסום עוצמתית במגזין',
+      body:'לפי התשובות שלך, יש לך מסר חד וברור שפשוט חייב להגיע לעיניים הנכונות. מודעה ממוקדת במגזין מאפשרת לך לתפוס את תשומת הלב של הלקוחה הפוטנציאלית בדיוק ברגע שבו היא מחפשת פתרון. עכשיו, כשאת יודעת על איזה כפתור רגשי ללחוץ, המודעה שלך לא תהיה "עוד פרסומת", אלא הפתרון המדויק שהיא חיפשה.',
+      whyTitle:'למה המהלך הזה יעבוד לך?',
+      why:'כי הוא מהיר, ממקד ומביא תוצאות. כשאת מדברת ישירות אל הכאב והצורך של הלקוחה שלך דרך מודעה ויזואלית חזקה, את מייצרת רצון מיידי לרכוש.',
+      offer:'מוכנה להביא אלייך את הלקוחות המדויקות? קבלי הטבה בלעדית: 10% הנחה על פרסום מודעה בגיליון הקרוב!',
+      button:'אני רוצה לפרסם מודעה ולממש את ההנחה!',
+      link:'mailto:lichyotalmale@gmail.com?subject=%D7%90%D7%A0%D7%99+%D7%A8%D7%95%D7%A6%D7%94+%D7%9C%D7%A4%D7%A8%D7%A1%D7%9D+%D7%9E%D7%95%D7%93%D7%A2%D7%94+%D7%95%D7%9C%D7%9E%D7%9E%D7%A9+%D7%90%D7%AA+%D7%94%D7%94%D7%A0%D7%97%D7%94!'
+    },
+    presence: {
+      title:'המהלך הבא שלך: חבילת 3 מודעות לנוכחות מתמשכת',
+      body:'לפי התשובות שלך, העסק שלך בשל לייצר נוכחות שאי אפשר להתעלם ממנה. מודעה אחת זה מצוין, אבל נוכחות עקבית לאורך מספר חודשים בונה חדירה עמוקה לתודעה של הלקוחה. ככה היא פוגשת אותך שוב ושוב, בדיוק עם המסר שנוגע לה בנקודת הרתיחה, עד שהיא פשוט חייבת לקנות.',
+      whyTitle:'למה המהלך הזה יעבוד לך?',
+      why:'כי שיווק אמיתי עובד על חזרתיות. כשאת שומרת על עקביות לאורך זמן, את בונה למותג שלך יציבות, זיהוי מיידי בעיני הקוראות, ואחוזי המרה הרבה יותר גבוהים.',
+      offer:'מוכנה לבנות נוכחות שאי אפשר לפספס? קבלי הטבה בלעדית: 10% הנחה על חבילת 3 מודעות!',
+      button:'אני רוצה לפרסם חבילת מודעות ולממש את ההנחה!',
+      link:'mailto:lichyotalmale@gmail.com?subject=%D7%90%D7%A0%D7%99+%D7%A8%D7%95%D7%A6%D7%94+%D7%9C%D7%A4%D7%A8%D7%A1%D7%9D+%D7%97%D7%91%D7%99%D7%9C%D7%AA+%D7%9E%D7%95%D7%93%D7%A2%D7%95%D7%AA+%D7%95%D7%9C%D7%9E%D7%9E%D7%A9+%D7%90%D7%AA+%D7%94%D7%94%D7%A0%D7%97%D7%94!+'
+    },
+    taste: {
+      title:'המהלך הבא שלך: טור מקצועי במגזין',
+      body:'לפי התשובות שלך, יש לך ידע שיכול לבנות אמון. טור מקצועי נותן לך מקום להסביר, ללמד ולהראות לקוראות איך את חושבת. ככה הן לא פוגשות אותך רק כפרסומת, אלא כאשת מקצוע שכדאי להקשיב לה.',
+      whyTitle:'למה המהלך הזה יעבוד לך?',
+      why:'כי הוא מתאים למקום שבו העסק שלך נמצא היום. כשאת יודעת מה הלקוחה שלך צריכה לשמוע, טור מקצועי מאפשר לך לדבר איתה דרך ערך אמיתי, לא דרך מכירה ישירה.',
+      offer:'מוכנה להפוך לאוטוריטה בתחום שלך? קבלי הטבה בלעדית: 10% הנחה על פרסום טור מקצועי בגיליון הקרוב!',
+      button:'אני רוצה לפרסם טור מקצועי ולממש את ההנחה!',
+      link:'mailto:lichyotalmale@gmail.com?subject=%D7%90%D7%A0%D7%99+%D7%A8%D7%95%D7%A6%D7%94+%D7%9C%D7%A4%D7%A8%D7%A1%D7%9D+%D7%98%D7%95%D7%A8+%D7%9E%D7%A7%D7%A6%D7%95%D7%A2%D7%99+%D7%95%D7%9C%D7%9E%D7%9E%D7%A9+%D7%90%D7%AA+%D7%94%D7%94%D7%A0%D7%97%D7%94!'
+    },
+    journey: {
+      title:'המהלך הבא שלך: סדרת 3 טורים מקצועיים לבניית סמכות מלאה',
+      body:'לפי התשובות שלך, יש לך עומק אסטרטגי וידע עצום שאי אפשר להעביר בנגיעה אחת. סדרת טורים מאפשרת לך לקחת את הקוראות למסע אמיתי. לבסס את עצמך כמומחית שאין לה תחליף, לייצר ציפייה מגיליון לגיליון, ולתת להן להכיר אותך באמת, עד שברור להן שאת הכתובת הבלעדית עבורן.',
+      whyTitle:'למה המהלך הזה יעבוד לך?',
+      why:'כי אמון עמוק נבנה לאורך זמן. כשאת מובילה תהליך של קריאה על פני מספר גיליונות ונותנת ערך עקבי, את לא רק מוכרת, את מחנכת שוק, הופכת למותג הבית שלהן, וגורמת להן להרגיש שהן כבר מכירות אותך.',
+      offer:'מוכנה לכבוש את המקום שלך כמומחית המובילה בתחום? קבלי הטבה בלעדית: 10% הנחה על סדרת 3 טורים!',
+      button:'אני רוצה לפרסם סדרת טורים ולממש את ההנחה!',
+      link:'mailto:lichyotalmale@gmail.com?subject=%D7%90%D7%A0%D7%99+%D7%A8%D7%95%D7%A6%D7%94+%D7%9C%D7%A4%D7%A8%D7%A1%D7%9D+%D7%A1%D7%93%D7%A8%D7%AA+%D7%98%D7%95%D7%A8%D7%99%D7%9D+%D7%95%D7%9C%D7%9E%D7%9E%D7%A9+%D7%90%D7%AA+%D7%94%D7%94%D7%A0%D7%97%D7%94!'
+    }
+  };
+
+  const scoring = {
+    price: {
+      low: {practical:1},
+      mid: {practical:1, investing:1},
+      high: {updated:2, investing:1},
+      premium: {updated:3, breath:1}
+    },
+    goal: {
+      many: {practical:1, updated:1},
+      quality: {investing:1, breath:1},
+      premium: {updated:2},
+      urgent: {practical:2},
+      authority: {investing:1, breath:1},
+      community: {breath:2, investing:1}
+    },
+    buying: {
+      security: {investing:2, breath:1},
+      time: {practical:2},
+      breath: {updated:2, breath:1},
+      practical: {practical:2}
+    },
+    trigger: {
+      style: {updated:8},
+      home: {practical:8},
+      kids: {investing:8},
+      self: {breath:8}
+    },
+    fear: {
+      price: {practical:1, updated:1},
+      fit: {investing:1, breath:1},
+      effort: {practical:2},
+      quality: {updated:2, investing:1}
+    },
+    strategy: {
+      pulse: {updated:1, practical:1},
+      presence: {practical:1, updated:1},
+      taste: {investing:1, breath:1},
+      journey: {breath:2, investing:1}
+    }
+  };
+
+  let current=0;
+  const steps=Array.from(document.querySelectorAll('#doubleMatchTool .dm-step'));
+  const progress=document.getElementById('dmProgress');
+  const err=document.getElementById('dmError');
+  const nextBtn=document.getElementById('dmNextBtn');
+  const submitBtn=document.getElementById('dmSubmitBtn');
+
+  window.dmStart=function(){
+    document.getElementById('dmFormCard').style.display='block';
+    document.getElementById('dmFormCard').scrollIntoView({behavior:'smooth',block:'start'});
+    update();
+  };
+
+  function update(){
+    steps.forEach((s,i)=>s.classList.toggle('active',i===current));
+    progress.style.width=((current+1)/steps.length*100)+'%';
+    nextBtn.style.display=current===steps.length-1?'none':'inline-flex';
+    submitBtn.style.display=current===steps.length-1?'inline-flex':'none';
+    err.style.display='none';
+  }
+
+  function validStep(){
+    const step=steps[current];
+    const required=Array.from(step.querySelectorAll('[required]'));
+    for(const el of required){
+      if(el.type==='radio'){
+        if(!step.querySelector('input[name="'+el.name+'"]:checked')) return false;
+      } else if(!el.value.trim()) return false;
+    }
+    return true;
+  }
+
+  window.dmNext=function(){
+    if(!validStep()){err.style.display='block'; return;}
+    if(current<steps.length-1){current++; update();}
+  };
+  window.dmPrev=function(){
+    if(current>0){current--; update();}
+  };
+  window.dmReset=function(){
+    document.getElementById('dmForm').reset();
+    document.getElementById('dmResult').classList.remove('show');
+    document.getElementById('dmFormCard').style.display='block';
+    current=0; update();
+    document.getElementById('dmFormCard').scrollIntoView({behavior:'smooth',block:'start'});
+  };
+
+  function addScore(scores,obj){
+    Object.keys(obj||{}).forEach(k=>scores[k]=(scores[k]||0)+obj[k]);
+  }
+
+  function checkedValue(name){
+    const el=document.querySelector('#doubleMatchTool input[name="'+name+'"]:checked');
+    return el?el.value:'';
+  }
+
+  function getText(name){
+    const el=document.querySelector('#doubleMatchTool [name="'+name+'"]');
+    return el?el.value.trim():'';
+  }
+
+  function textSignals(text,scores){
+    const t=(text||'').toLowerCase();
+    const signals=[
+      [/(בית|עיצוב|ארגון|סידור|קייטרינג|אוכל|בישול|ארוחה|שגרה|לסגור פינה|מתקתק|חלומי)/, 'practical', 1],
+      [/(ילד|ילדים|התפתחות|למידה|חינוך|ביטחון|הצלחה|נגינה|מוזיקה|שיעור|אבחון|קשב|שפה|דיבור)/, 'investing', 1],
+      [/(זוגיות|ניצוץ|קרבה|חיבור|עצמי|פנימי|אישי|התפתחות אישית|רגש|ביטחון פנימי|חוזרת לעצמי)/, 'breath', 1],
+      [/(סטייל|יופי|איפור|שיער|קוסמטיקה|בגדים|אופנה|מוקפד|עדכני|אסתטיקה|פרימיום|טיפוח|מטופחת)/, 'updated', 1]
+    ];
+    signals.forEach(s=>{ if(s[0].test(t)) scores[s[1]]+=s[2]; });
+  }
+
+  function analyzeDraft(draft, topKey){
+    if(!draft) return '<p>לא הודבקה טיוטה, לכן האבחון מתבסס על התשובות שבחרת. כשתהיה לך מודעה או פוסט, כדאי לבדוק האם הטקסט מדבר על החיים של האמא, ולא רק על המוצר.</p>';
+    const len=draft.length;
+    const hasCTA=/(להרשמה|שלחי|כתבי|לחצי|פני|לתיאום|לקנייה|וואטסאפ|השאירי|הזמיני)/.test(draft);
+    const hasEmotion=/(מרגישה|נמאס|עייפה|רוצה|חולמת|מפחדת|שקט|ביטחון|שמחה|רגועה|כוחות)/.test(draft);
+    const hasProof=/(לקוחות|המלצה|ניסיון|תוצאה|לפני|אחרי|סיפור|ממליצות)/.test(draft);
+    let lines=[];
+    lines.push('הטקסט שלך כבר נותן לנו חומר אישי לעבוד איתו.');
+    lines.push(len<90?'התחושה היא שהטקסט קצר מאוד, כדאי להוסיף תמונת מצב מהחיים שלה כדי שהיא תרגיש שמבינים אותה.':'יש מספיק טקסט כדי להעביר מסר, עכשיו חשוב לוודא שהוא חד ולא עמוס מדי.');
+    lines.push(hasEmotion?'יש בו התחלה של שפה רגשית, זה מצוין, כדאי לחזק אותה דרך משפט שמתאר רגע יומיומי שלה.':'כרגע חסרה בו שפת כאב או פנטזיה. הוסיפי משפט שמתאר מה היא אומרת לעצמה לפני שהיא פונה.');
+    lines.push(hasProof?'יש רמזים לאמון או הוכחה, כדאי להפוך אותם לבולטים יותר.':'חסר עוגן אמון, כמו המלצה, ניסיון, דוגמה או תוצאה.');
+    lines.push(hasCTA?'יש הנעה לפעולה, חשוב שתהיה פשוטה וברורה.':'חסרה הנעה ברורה לפעולה, האמא צריכה להבין מה הצעד הבא שלה.');
+    return '<ul><li>'+lines.join('</li><li>')+'</li></ul>';
+  }
+
+
+  function cleanInputText(txt, fallback){
+    txt=(txt||'').trim();
+    return txt || fallback;
+  }
+
+  function genericServiceLine(product){
+    product=cleanInputText(product,'השירות שלך');
+    return product.length>52 ? product.slice(0,52)+'...' : product;
+  }
+
+  function detectDomain(product, promise, draft){
+    // מקור האמת הוא המוצר/השירות והבשורה שהוזנו באבחון הנוכחי.
+    // הטקסט החופשי משמש רק אם לא זוהה תחום מתוך המוצר והבשורה.
+    const tests=[
+      ['anger',/(כעס|כעסים|ויסות כעס|וויסות כעס|התפרצות|התפרצויות|צעקות|עצבים|רגשות אשם|איבוד שליטה|שליטה עצמית)/],
+      ['sleep',/(שינה|לישון|לילות|הירדמות|הרדמה|תינוקות ישנים|ייעוץ שינה)/],
+      ['music',/(נגינה|מוזיקה|מוסיקה|פסנתר|גיטרה|כינור|חליל|תופים|שירה|פיתוח קול|כלי נגינה|קונסרבטוריון|קורס נגינה|חוג נגינה|שיעורי נגינה)/],
+      ['photo',/(צילום|צלמת|תמונות|אלבום|ניו.?בורן|משפחה|סטודיו|בוק)/],
+      ['therapy',/(טיפול|רגשי|מטפלת|חרדה|ויסות|קושי|התנהגות|הדרכת הורים|אימון הורי|קשר)/],
+      ['education',/(למידה|קריאה|כתיבה|חינוך|הוראה|התפתחות|קלינאית|דיבור|קשב|אבחון|שפה|משחקי למידה)/],
+      ['food',/(קייטרינג|אוכל|ארוחה|עוגה|אפייה|מארז|פשטידה|חלבי|בישול|מטבח)/],
+      ['style',/(בגדים|אופנה|סטייל|יופי|איפור|שיער|קוסמטיקה|תכשיט|קולקציה|עיצוב אישי)/],
+      ['home',/(עיצוב הבית|מעצבת פנים|חדר ילדים|בית|ארגון הבית|סידור|נגרות|ריהוט)/],
+      ['event',/(אירוע|סדנה|חוג|הפעלה|יום הולדת|אטרקציה|נופש|חוויה)/],
+      ['business',/(עסק|שיווק|מיתוג|דף נחיתה|פרסום|אסטרטגיה|ליווי עסקי|מכירות)/]
+    ];
+    const primary=((product||'')+' '+(promise||'')).toLowerCase();
+    for(const [name,re] of tests){ if(re.test(primary)) return name; }
+    const secondary=(draft||'').toLowerCase();
+    for(const [name,re] of tests){ if(re.test(secondary)) return name; }
+    return 'generic';
+  }
+  const domainLines = {
+    anger:{
+      base:'קורס לוויסות כעסים',
+      practical:'לעצור רגע לפני שהצעקה יוצאת, לדעת מה לעשות כשהילדים לוחצים על כל הכפתורים, ולסיים את היום עם פחות פיצוצים ופחות רגשות אשם.',
+      investing:'לתת לילדים בית רגוע יותר, מודל אחר להתמודדות עם תסכול, ותחושה שאפשר לתקן גם אחרי רגעים קשים.',
+      breath:'להחזיר לעצמך נשימה בתוך רגעי לחץ, להרגיש שאת לא נשלטת על ידי הכעס, ולחזור הביתה לעצמך רגועה יותר.',
+      updated:'לבחור תהליך ברור ומכבד שמלמד אותך להגיב אחרת ברגע האמת, בלי להרגיש שאת אמא לא טובה.',
+      inner:'אני לא רוצה לצעוק שוב, אבל ברגע האמת זה יוצא ממני ואז אני נשארת עם אשמה.',
+      mistake:'לדבר על כלים, קורס או שיטה, בלי לתאר את רגע השינוי: הילד מתפרץ, את נושמת, מגיבה אחרת, והבית לא נכנס לסחרור.',
+      secret:'אל תמכרי לה קורס. תמכרי לה את הרגע שבו היא מצליחה לעצור לפני הצעקה, להגיב אחרת, וללכת לישון בלי אשמה.'
+    },
+    sleep:{
+      base:'ייעוץ שינה מקצועי ומותאם אישית',
+      practical:'להגיע לערב שבו ההשכבה לא נמרחת שעה, את יודעת בדיוק מה לעשות, והלילה מפסיק לנהל את כל הבית.',
+      investing:'לתת לילד שינה רגועה ובטוחה יותר, ולדעת שאת לא מנחשת לבד אלא בונה לו הרגלים טובים ובריאים.',
+      breath:'לקבל בחזרה ערב שקט, זמן לנשום וכוחות לקום בבוקר בלי להרגיש שאת על אדים.',
+      updated:'להכניס לבית תהליך שינה מסודר, רגוע ומדויק, בלי עוד ניסוי וטעייה ובלי תחושת בלגן.',
+      inner:'אם הלילה שוב יתפרק, איך אני אצליח לתפקד מחר? אני צריכה שמישהי תעשה לי סדר ותגיד לי בדיוק מה נכון לילד שלי.',
+      mistake:'לדבר על שיטה, תהליך או מקצועיות, בלי לתאר לה את הערב הרגוע, הבוקר השפוי והביטחון שהיא תקבל בבית.',
+      secret:'אל תמכרי לה ייעוץ שינה. תמכרי לה ערב בלי מאבק, לילה פחות מתיש, ובוקר שבו היא מרגישה שוב אמא עם כוחות.'
+    },
+    music:{
+      base:'קורס נגינה לילדים',
+      practical:'לתת לילד מסגרת קבועה וברורה שבה הוא מתקדם משיעור לשיעור, מתאמן בצורה נעימה, ומקבל תחביב איכותי שממלא את אחר הצהריים בתוכן טוב, משמעותי ונעים.',
+      investing:'לראות את הילד מגלה שהוא מסוגל, מתמיד, מצליח לנגן יצירה בעצמו, ומקבל ביטחון וגאווה דרך הצלחות קטנות.',
+      breath:'לתת לילד מרחב יצירתי שמשחרר לחץ, מכניס לבית רגעים של רוגע ושמחה, ומאפשר לו לבטא את עצמו בדרך אחרת.',
+      updated:'לבחור לילד חוג איכותי ומוקפד שמפתח כישרון, משמעת ותחושת מסוגלות, ולא עוד פעילות סתמית להעביר איתה את אחר הצהריים.',
+      inner:'אני רוצה שהוא ימצא משהו שהוא אוהב באמת, יתמיד בו, ירגיש שהוא מצליח, ויקבל ביטחון דרך הצלחות קטנות.',
+      mistake:'לדבר על מספר שיעורים, שיטת לימוד או מקצועיות המורה, בלי לתאר את הילד שמצליח לנגן, מתמלא גאווה ורץ להשמיע לך מה למד.',
+      secret:'אל תמכרי לה קורס נגינה. תמכרי לה ילד שמגלה יכולת חדשה, מתרגל התמדה, נהנה ליצור, ומרגיש גאה בעצמו.'
+    },
+    photo:{
+      base:'צילומי משפחה מקצועיים',
+      practical:'לסגור סוף סוף את עניין התמונות בשעה מסודרת אחת, בלי לרדוף אחרי הילדים חודשים ובלי להתעסק עם זה שוב.',
+      investing:'לתת לילדים מזכרת משפחתית שהם יגדלו איתה, ולדעת שתיעדת תקופה שלא תחזור.',
+      breath:'לקבל רגע משפחתי נעים ומרגש, שבו את לא צריכה לארגן את כולם לבד אלא פשוט להיות בתוך הזיכרון.',
+      updated:'להחזיק תמונות מוקפדות ויפות שמרגישות בדיוק כמו המשפחה שלך, טבעיות, אסתטיות ולא כמו משהו שרואים אצל כולם.',
+      inner:'הם גדלים כל כך מהר, ואני מפחדת שהתקופה הזאת תעבור בלי שתישאר לי ממנה מזכרת אמיתית.',
+      mistake:'לדבר על כמות תמונות, סטודיו או עריכה, במקום לדבר על הזיכרון, ההתרגשות והתקופה שהיא לא רוצה לשכוח.',
+      secret:'אמא לא קונה תמונות. היא קונה דרך לחזור לרגעים הקטנים שגם היא יודעת שעוד מעט כבר לא יהיו.'
+    },
+    therapy:{
+      base:'טיפול או ליווי רגשי מקצועי',
+      practical:'לקבל דרך ברורה להתמודד עם הרגעים הקשים בבית, בלי להרגיש שכל ערב נגמר בפיצוץ או בחוסר אונים.',
+      investing:'לעזור לילד להרגיש בטוח יותר בעצמו, ולדעת שנתת לו כלים שילכו איתו גם מחוץ לבית.',
+      breath:'להחזיר קצת שקט לבית וללב, ולהרגיש שאת לא מחזיקה לבד את כל העומס הרגשי של כולם.',
+      updated:'לבחור ליווי רגיש, מדויק ומכבד שמתאים למשפחה שלך ולא מרגיש כמו פתרון גנרי.',
+      inner:'אני רואה שקשה לו, ואני לא תמיד יודעת איך לעזור בלי להחמיר את המצב.',
+      mistake:'לדבר על שיטות טיפול או הכשרות, בלי לתאר את הרגע שבו הילד נרגע, נפתח או חוזר להאמין בעצמו.',
+      secret:'דברי על הבית אחרי השינוי, פחות מתח, יותר הבנה, יותר מילים במקום התפרצויות, ותחושה שיש דרך.'
+    },
+    education:{
+      base:'ליווי לימודי או התפתחותי מקצועי',
+      practical:'להפסיק לנחש איך לעזור לו, ולקבל דרך ברורה שמקדמת אותו בלי עוד מאבקים סביב שיעורים ותרגול.',
+      investing:'לראות אותו מצליח צעד אחרי צעד, ולהרגיש שנתת לו בסיס חזק, ביטחון וגאווה בעצמו.',
+      breath:'להוריד ממך את הלחץ של “אני צריכה לפתור את זה לבד”, ולקבל ליווי שמחזיר רוגע לתהליך.',
+      updated:'לבחור מענה מדויק, איכותי ומותאם לילד שלך, כזה שלא מרגיש כמו עוד תרגול יבש.',
+      inner:'אולי הוא צריך עזרה ואני מפספסת משהו? אני רוצה לתת לו את הכלים הנכונים בזמן.',
+      mistake:'לדבר על שיטה, חומר או מקצועיות, בלי להראות לה את הילד שמצליח, מתעודד ומאמין שהוא מסוגל.',
+      secret:'דברי על הרגע שבו הילד מצליח משהו שהיה לו קשה, ועל האמא שמרגישה שהיא סוף סוף יודעת שהיא עשתה נכון.'
+    },
+    food:{
+      base:'אוכל איכותי או קייטרינג ביתי',
+      practical:'לסגור ארוחה טובה בלי לעמוד שעות במטבח, בלי ללכלך סירים ובלי להגיע לערב מותשת.',
+      investing:'להגיש לילדים ולאורחים אוכל טוב, נעים ומזין, ולהרגיש שדאגת להם כמו שרצית.',
+      breath:'להוריד מעצמך את הלחץ של ההכנות ולקבל רגע לנשום לפני שהאורחים או הילדים מגיעים.',
+      updated:'להגיש שולחן מוקפד, יפה וטעים שמרגיש מושקע, בלי שיראה שהתפשרת.',
+      inner:'אין לי כוח לעוד בישולים, אבל אני עדיין רוצה שכולם יאכלו טוב ושזה ירגיש מכובד.',
+      mistake:'לדבר על מגוון, טעם או איכות בלבד, במקום לדבר על הזמן, השקט והכבוד שהיא מקבלת כשהארוחה כבר מסודרת.',
+      secret:'אל תמכרי לה אוכל. תמכרי לה ערב שפוי, שולחן מוכן ותחושה שהיא דאגה לכולם בלי לקרוס בדרך.'
+    },
+    style:{
+      base:'מוצר סטייל, אופנה או יופי',
+      practical:'לבחור מהר משהו שנראה טוב, יושב נכון וחוסך לה התלבטויות מול הארון או לפני אירוע.',
+      investing:'לתת לעצמה או לילדים מראה שמרגיש מושקע, נעים ומכבד, בלי לוותר על איכות.',
+      breath:'לקבל רגע שבו היא מרגישה שוב אישה, לא רק אמא שמתקתקת את כולם.',
+      updated:'להיראות מוקפדת, מדויקת וייחודית, עם משהו שלא מרגיש כמו עוד בחירה רגילה.',
+      inner:'אני רוצה להרגיש טוב עם עצמי, להיראות מושקעת, ושלא ירגיש שהתפשרתי.',
+      mistake:'לדבר על בד, מחיר או קולקציה, במקום לדבר על התחושה שלה כשהיא מסתכלת במראה או נכנסת לאירוע.',
+      secret:'דברי על הביטחון, הדיוק והתחושה שהיא בחרה משהו שמייצג אותה, לא רק על המוצר עצמו.'
+    },
+    home:{
+      base:'עיצוב, ארגון או שדרוג לבית',
+      practical:'להפוך את הבית לנוח ומסודר יותר בלי עוד רשימת משימות שמתגלגלת חודשים.',
+      investing:'ליצור לילדים ולמשפחה מרחב נעים, רגוע ומותאם לחיים שלהם.',
+      breath:'להיכנס הביתה ולהרגיש סוף סוף שיש מקום שנושם איתך ולא עוד אזור שמעמיס עלייך.',
+      updated:'לקבל בית מוקפד, יפה ומדויק שמרגיש שלך, בלי להתפשר על פרטים קטנים.',
+      inner:'הבית שלי אמור להיות המקום המרגיע שלי, אבל כרגע הוא בעיקר מזכיר לי כמה עוד לא הספקתי.',
+      mistake:'לדבר על עיצוב, חומרים או פתרונות אחסון, בלי לתאר את התחושה של בית שנעים לחזור אליו.',
+      secret:'אל תמכרי עיצוב. תמכרי את הרגע שבו היא פותחת את הדלת ומרגישה שהבית סוף סוף עובד בשבילה.'
+    },
+    event:{
+      base:'חוויה, סדנה או פעילות',
+      practical:'לסגור פעילות טובה בלי לשבור את הראש, בלי לארגן הכול לבד ובלי לחשוש שזה לא יחזיק את הילדים.',
+      investing:'לתת לילדים חוויה עם ערך, שמחה ומשמעות, ולא רק עוד דרך להעביר את הזמן.',
+      breath:'לקבל זמן איכות או הפוגה שמטעינים אותה מחדש ונותנים לה רגע לצאת מהמרוץ.',
+      updated:'לבחור חוויה מוקפדת, נעימה ושונה, כזאת שמרגישה מיוחדת ולא כמו עוד פעילות רגילה.',
+      inner:'אני רוצה משהו שיהיה באמת מוצלח, שלא אפול על עוד פעילות מאכזבת או מבולגנת.',
+      mistake:'לדבר על מה קורה בפעילות, בלי לתאר את התחושה בסוף, ילדים מרוצים, אמא רגועה וחוויה שנזכרים בה.',
+      secret:'דברי על התוצאה של החוויה, לא רק על התוכן שלה, פחות כאב ראש, יותר חיבור, יותר שמחה.'
+    },
+    business:{
+      base:'ליווי או שירות עסקי מקצועי',
+      practical:'לעשות סדר בעסק, להבין מה הצעד הבא, ולהפסיק לבזבז זמן על ניסיונות שלא מקדמים אותך.',
+      investing:'לבנות עסק יציב יותר, עם החלטות טובות יותר ותחושת ביטחון שאת בכיוון הנכון.',
+      breath:'להוריד מהראש עומס של שיווק, תכנון או החלטות, ולקבל מרחב לחשוב ברור.',
+      updated:'להציג את העסק בצורה מדויקת, מוקפדת ומקצועית שמרגישה ברמה אחרת.',
+      inner:'אני עושה הרבה, אבל לא בטוחה שזה באמת עובד. אני צריכה שמישהי תעשה לי סדר ותראה לי את הדרך.',
+      mistake:'לדבר על שירותים ותוצרים, בלי להראות לה את תחושת הסדר, השליטה והביטחון שהיא תקבל בעסק.',
+      secret:'דברי על הבהירות שהיא תקבל, על ההחלטות שיהיו קלות יותר, ועל התחושה שהיא כבר לא לבד עם העסק.'
+    },
+    generic:{
+      base:'השירות שלך',
+      practical:'להבין מהר מה לעשות עכשיו, לחסוך זמן, ולהוריד מהראש עוד משימה שמעמיסה על היום.',
+      investing:'להרגיש שהיא עושה בחירה טובה ונכונה עבור המשפחה, הילד או הבית שלה.',
+      breath:'לקבל רגע של שקט, הקלה ונשימה בתוך עומס היומיום.',
+      updated:'לבחור פתרון מדויק, מוקפד ואיכותי שמרגיש כמו שדרוג אמיתי.',
+      inner:'אני רוצה לדעת שזה באמת מתאים לי, שזה יחסוך לי כאב ראש, ושארגיש שבחרתי נכון.',
+      mistake:'לדבר על המוצר עצמו, במקום לתרגם אותו לחיים שלה, לכאב שלה ולרגע שאחרי.',
+      secret:'אל תתארי רק מה את מוכרת. תראי לה איך החיים שלה ייראו אחרת אחרי שהיא בוחרת בך.'
+    }
+  };
+
+  
+  function archetypeLens(key){
+    if(key==='updated'){
+      return {
+        motive:'היא צריכה להרגיש שבחרה במענה איכותי, מוקפד, בטוב טעם ומתאים לרמה שהיא מחפשת.',
+        mistake:'בגלל שהטריגר שלה הוא שדרוג איכותי, אל תישארי ברמת פרטים טכניים. הדגישי דיוק, תחושת בחירה טובה וחוויה ברמה גבוהה.',
+        secret:'הטריגר שלה הוא הרצון להרגיש במיטבה. גם אם התחום שלך אינו טיפוח או אופנה, תרגמי את השירות שלך לתחושה של בחירה איכותית, מסודרת ומדויקת.',
+        words:['מוקפד','עדכני','בטוב טעם','מדויק','להרגיש שבחרתי נכון']
+      };
+    }
+    if(key==='practical'){
+      return {
+        motive:'היא צריכה להרגיש שהחיים בבית או בשגרה נהיים קלים, נעימים ומסודרים יותר.',
+        mistake:'בגלל שהטריגר שלה קשור לבית, לשגרה או לסגירת פינה, אל תדברי רק על השירות. הדגישי איך זה מוריד עומס, מסדר את המצב ונותן לה שקט.',
+        secret:'הטריגר שלה הוא הרצון להרגיש שהעניינים מתקתקים. תרגמי את השירות שלך לרגע שבו משהו שהיה תקוע או מעמיס סוף סוף נפתר.',
+        words:['מתקתק','לסגור פינה','נעים','חכם','מקום שנותן כוח']
+      };
+    }
+    if(key==='investing'){
+      return {
+        motive:'היא צריכה להרגיש שהיא עושה את הדבר הנכון עבור הילד שלה ונותנת לו מענה טוב בזמן.',
+        mistake:'בגלל שהטריגר שלה יושב על דאגה לילד, אל תדברי רק על שיטה, שיעורים או מקצועיות. הדגישי את רגע ההצלחה של הילד ואת השקט שלה כאמא.',
+        secret:'הטריגר שלה הוא הדאגה לילד. תרגמי את השירות שלך לרגע שבו היא רואה אותו מצליח, רגוע יותר או בטוח יותר בעצמו.',
+        words:['בידיים טובות','הכי טוב שיש','העיניים נוצצות','שקט נפשי','בסיס חזק']
+      };
+    }
+    if(key==='breath'){
+      return {
+        motive:'היא צריכה להרגיש שמשהו פנימי, זוגי או רגשי חוזר להתחבר ולהיות בטוח יותר.',
+        mistake:'בגלל שהטריגר שלה עמוק ורגשי, אל תדברי בשפה מקצועית קרה. הדגישי את התחושה שאחרי השינוי, חיבור, קרבה, בהירות וביטחון פנימי.',
+        secret:'הטריגר שלה הוא רצון לחיבור מחדש. תרגמי את השירות שלך לרגע שבו היא מרגישה יותר קרובה לעצמה, רגועה יותר או בטוחה יותר בקשר.',
+        words:['חיבור מחדש','הניצוץ','קרבה','ביטחון פנימי','הבנה בעיניים']
+      };
+    }
+    return {motive:'', mistake:'', secret:'', words:[]};
+  }
+
+  function buildMotivation(key, line, product, domain){
+    const p=genericServiceLine(product);
+    const lens=archetypeLens(key);
+    return 'היא לא מגיבה בעיקר ל'+p+'. היא מגיבה לתוצאה שזה יוצר בחיים שלה: '+line+' '+lens.motive;
+  }
+
+  function buildMistake(key, line, product, domain){
+    const p=genericServiceLine(product);
+    const lens=archetypeLens(key);
+    const d=domainLines[domain] || domainLines.generic;
+    return 'לדבר על '+p+' דרך מאפיינים, מחיר או מקצועיות בלבד, במקום לתאר את הרגע שאחרי: '+line+' '+lens.mistake;
+  }
+
+  function buildSecret(key, line, domain){
+    const lens=archetypeLens(key);
+    const words=(lens.words && lens.words.length ? lens.words : (archetypes[key].words||[])).join(', ');
+    return lens.secret+' מילות מפתח שכדאי לשלב: '+words+'.';
+  }
+
+  function tailoredExample(key, product, promise, draft){
+    product=cleanInputText(product,'השירות שלך');
+    promise=cleanInputText(promise,'');
+    const p=genericServiceLine(product);
+    const domain=detectDomain(product, promise, draft);
+    const d=domainLines[domain] || domainLines.generic;
+    const line=d[key] || d.investing || d.practical || d.updated || d.breath || 'לתאר לה את הרגע שאחרי הבחירה, כשהחיים שלה מרגישים מדויקים, קלים ונכונים יותר.';
+    const dontBase=p && p!=='המוצר שלך' && p!=='השירות שלך' ? p : ((domain==='generic' && promise) ? promise : (d.base || p));
+    const dont=genericServiceLine(dontBase)+' מקצועי ואיכותי.';
+    return {
+      domain,
+      dont,
+      do:line,
+      inner:d.inner || archetypes[key].inner,
+      motivation:buildMotivation(key, line, product, domain),
+      mistake:buildMistake(key, line, product, domain),
+      secret:buildSecret(key, line, domain)
+    };
+  }
+
+
+function secondaryTip(key, percent, product, promise, draft){
+    if(percent < 25) return '';
+    const a=archetypes[key];
+    const ex=tailoredExample(key, product, promise, draft);
+    return '<div class="dm-panel"><h3>שימי לב, יש גם קהל משני משמעותי</h3><p>'+percent+'% מהפרופיל שלך מתאים גם ל'+a.name+'. לכן כדאי לשלב במסר גם נגיעה קצרה לעולם שלה.</p><p><strong>כיוון קצר שמתאים לתחום שלך:</strong> '+ex.do+'</p></div>';
+  }
+
+  window.dmFinish=function(){
+    if(!validStep()){err.style.display='block'; return;}
+    const scores={practical:0, investing:0, breath:0, updated:0};
+    ['price','goal','buying','trigger','fear','strategy'].forEach(name=>addScore(scores, scoring[name][checkedValue(name)]));
+    textSignals(getText('product')+' '+getText('promise')+' '+getText('draft'), scores);
+    const triggerChoice=checkedValue('trigger');
+    const primaryByTrigger={style:'updated', home:'practical', kids:'investing', self:'breath'}[triggerChoice];
+    if(primaryByTrigger){ scores[primaryByTrigger]+=20; }
+
+    const entries=Object.entries(scores).sort((a,b)=>b[1]-a[1]);
+    const total=Math.max(1, entries.reduce((a,b)=>a+b[1],0));
+    const topKey=entries[0][0], secondKey=entries[1][0];
+    const top=archetypes[topKey], second=archetypes[secondKey];
+
+    document.getElementById('dmResultTitle').textContent='האמא הדומיננטית שלך היא '+top.name;
+    document.getElementById('dmResultIntro').textContent='לפי התשובות שלך, הלקוחות שהכי צפויות להימשך למסר שלך הן אמהות שפועלות מתוך '+top.label+'. יש גם גוון משני של '+second.name+', ולכן כדאי לשלב במסר גם נגיעה קלה לעולם הזה.';
+
+    document.getElementById('dmBadges').innerHTML=entries.map(([k,v])=>'<div class="dm-badge"><strong>'+Math.round(v/total*100)+'%</strong><span>'+archetypes[k].name+'</span></div>').join('');
+
+    const draft=getText('draft');
+    const product=getText('product') || 'המוצר שלך';
+    const promise=getText('promise') || '';
+    const topExample=tailoredExample(topKey, product, promise, draft);
+    const secondPercent=Math.round(scores[secondKey]/total*100);
+    const grid=[
+      ['מה באמת מניע אותה לקנות', topExample.motivation],
+      ['הקול הפנימי שלה', topExample.inner],
+      ['הטעות השיווקית הכי מסוכנת עבורך', topExample.mistake],
+      ['איך להפוך את המסר לשפת לקוח', '<p><strong>אל תכתבי:</strong> '+topExample.dont+'</p><p><strong>תכתבי:</strong> '+topExample.do+'</p><p><strong>הסוד שלך:</strong> '+topExample.secret+'</p>'],
+      ['מילות מפתח שכדאי לשלב', (archetypeLens(topKey).words && archetypeLens(topKey).words.length ? archetypeLens(topKey).words : top.words).join(', ')],
+      ['מה עובר בטקסט שלך', analyzeDraft(draft, topKey)]
+    ];
+    let gridHtml=grid.map(([h,b])=>'<div class="dm-panel"><h3>'+h+'</h3><div>'+b+'</div></div>').join('');
+    gridHtml += secondaryTip(secondKey, secondPercent, product, promise, draft);
+    document.getElementById('dmResultGrid').innerHTML=gridHtml;
+
+    const st=strategyText[checkedValue('strategy')];
+    const mailLink=st.link;
+    document.getElementById('dmStrategyBox').innerHTML='<h3>'+st.title+'</h3><p>'+st.body+'</p><div class="dm-why"><strong>'+st.whyTitle+'</strong><br>'+st.why+'</div><p>'+st.offer+'</p><a class="dm-btn" href="'+mailLink+'" target="_blank" rel="noopener">'+st.button+'</a><div class="dm-mail">מתלבטת או רוצה לבדוק התאמה? שלחי לי מייל: <a href="mailto:lichyotalmale@gmail.com">lichyotalmale@gmail.com</a></div>';
+
+    try {
+      localStorage.setItem('doubleMatchResultHTML', document.getElementById('dmResult').innerHTML);
+      localStorage.setItem('doubleMatchResultSavedAt', String(Date.now()));
+    } catch(e) {}
+
+    document.getElementById('dmFormCard').style.display='none';
+    document.getElementById('dmResult').classList.remove('show');
+    document.getElementById('dmRegistration').classList.add('show');
+    document.getElementById('dmRegistration').scrollIntoView({behavior:'smooth',block:'start'});
+  };
+})();
+
+(function(){
+  var API='https://script.google.com/macros/s/AKfycbz3rMYCIxHQuo4hkiiHKEVAuQ_nszwJBhccpDOiPMbiR5OxadIP7Lf-8mfIM1ImYFCKOQ/exec';
+  var f=document.getElementById('dmLeadForm'); if(!f) return;
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    var n=document.getElementById('dmLeadName').value.trim(), m=document.getElementById('dmLeadEmail').value.trim(), ok=document.getElementById('dmLeadConsent').checked, err=document.getElementById('dmLeadErr');
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(m)){err.textContent='נראה שהמייל לא תקין';return;}
+    if(!ok){err.textContent='כדי לקבל את התוצאה צריך לסמן את האישור';return;}
+    if(document.getElementById('dmHp').value) return;
+    err.textContent='';
+    try{fetch(API,{method:'POST',mode:'no-cors',body:new URLSearchParams({a:'s',email:m,name:n,list:"דאבל מאץ'",consent:'1',source:'דאבל מאץ׳ באתר',hp:''})}).catch(function(){});}catch(x){}
+    document.getElementById('dmRegistration').classList.remove('show');
+    var r=document.getElementById('dmResult'); r.classList.add('show'); r.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+})();
+
+</script>
+</body>
+</html>
