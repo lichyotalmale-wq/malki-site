@@ -472,7 +472,30 @@ class Component extends DCLogic {
   }
 }
 
-DCLite.mount(Component, {});
+(function () {
+  // נוסחים מעודכנים מהגיליון (לשונית "טקסטים"), עם ברירת מחדל אם אין תשובה תוך 2.5 שניות
+  var done = false;
+  function go() { if (done) return; done = true; DCLite.mount(Component, {}); }
+  function apply(m) {
+    Object.keys(m || {}).forEach(function (k) {
+      var path = k.split('.'), root = path.shift() === 'QD' ? QD : (k.indexOf('QX.') === 0 ? QX : null), o = root;
+      if (!o) return;
+      for (var i = 0; i < path.length - 1; i++) { if (o == null) return; o = o[path[i]]; }
+      var last = path[path.length - 1];
+      if (o != null && typeof o[last] === 'string' && m[k]) o[last] = m[k];
+    });
+  }
+  try {
+    var c = sessionStorage.getItem('qc');
+    if (c) { apply(JSON.parse(c)); return go(); }
+  } catch (e) {}
+  setTimeout(go, 2500);
+  fetch("https://script.google.com/macros/s/AKfycbz3rMYCIxHQuo4hkiiHKEVAuQ_nszwJBhccpDOiPMbiR5OxadIP7Lf-8mfIM1ImYFCKOQ/exec?a=qc", { credentials: 'omit' }).then(function (r) { return r.json(); }).then(function (m) {
+    if (done) return;
+    try { sessionStorage.setItem('qc', JSON.stringify(m)); } catch (e) {}
+    apply(m); go();
+  }).catch(go);
+})();
 </script>
 </body>
 </html>
