@@ -84,8 +84,8 @@ button{font-family:inherit}
 <a href="#service-contact" style="font-family: Fredoka, sans-serif; font-weight: 500; text-decoration: none; color: #F4E6DE; border: 1px solid #C9957F; padding: 13px 28px; border-radius: 999px">השאירי פרטים</a>
 </div>
 </div>
-<form id="service-contact" name="service-contact" method="POST" action="/thanks.html" data-netlify="true" netlify-honeypot="bot-field" style="background: #FFFDFB; border: 1px solid #EFE1D8; border-radius: 28px; padding: 30px 26px; display: flex; flex-direction: column; gap: 14px; scroll-margin-top: 20px">
-<input type="hidden" name="form-name" value="service-contact"><input type="hidden" name="page" value="חרדות ודאגות"><p style="display:none"><label>לא למילוי<input name="bot-field"></label></p>
+<form id="service-contact" name="service-contact" method="POST" data-contact style="background: #FFFDFB; border: 1px solid #EFE1D8; border-radius: 28px; padding: 30px 26px; display: flex; flex-direction: column; gap: 14px; scroll-margin-top: 20px">
+<input type="hidden" name="page" value="חרדות ודאגות"><p style="display:none"><label>לא למילוי<input name="bot-field"></label></p>
 <span style="font-family: Fredoka, sans-serif; font-weight: 500; font-size: 24px">רוצה שאחזור אלייך?</span>
 <p style="margin: -6px 0 2px; color: #5E4840"><span class="n-day">אפשר לכתוב שורה, ואחזור אלייך בשעה נוחה, בדיסקרטיות.</span><span class="n-night">אפשר לכתוב שורה גם עכשיו, באמצע הלילה. אחזור אלייך בשעה נוחה, בדיסקרטיות.</span></p>
 <label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; color: #7A6259">שם<input type="text" name="name" required autocomplete="name" style="font: inherit; font-size: 18px; color: #3B2925; padding: 12px 16px; border: 1px solid #E6D6CC; border-radius: 14px; background: #FAF6F1"></label>
@@ -102,5 +102,12 @@ button{font-family:inherit}
 </div>
 </footer>
 </div>
+<script>/* טופסי יצירת קשר -> מערכת הדיוור (במקום נטליפיי) */
+document.addEventListener('submit',function(e){var f=e.target;if(!f||!f.hasAttribute('data-contact'))return;e.preventDefault();
+var fd=new FormData(f);var b=new URLSearchParams();fd.forEach(function(v,k){b.append(k,v)});b.set('a','contact');b.set('form-name',f.getAttribute('name')||'contact');b.set('page',location.pathname);
+var btn=f.querySelector('[type=submit],button');if(btn){btn.disabled=true;}
+var done=function(){location.href='/thanks.html'};
+try{fetch('https://script.google.com/macros/s/AKfycbz3rMYCIxHQuo4hkiiHKEVAuQ_nszwJBhccpDOiPMbiR5OxadIP7Lf-8mfIM1ImYFCKOQ/exec',{method:'POST',mode:'no-cors',body:b}).then(done,done);}catch(x){done()}
+setTimeout(done,6000);},true);</script>
 </body>
 </html>

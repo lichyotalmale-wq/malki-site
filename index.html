@@ -419,8 +419,8 @@ body::after{content:"";position:fixed;inset:0;z-index:60;pointer-events:none;opa
 <span>קליניקה בעפולה, לנשים מכל הצפון. ואפשר גם בזום.</span>
 </div>
 </div>
-<form class="rv" name="contact" method="POST" action="/thanks.html" data-netlify="true" netlify-honeypot="bot-field" style="flex: 999 1 420px; min-width: 0; background: #FFFDFB; color: #3B2925; border-radius: 30px; padding: 44px 40px; display: flex; flex-direction: column; gap: 24px">
-<input type="hidden" name="form-name" value="contact"><p style="display:none"><label>לא למילוי<input name="bot-field"></label></p><span style="font-family: Fredoka, sans-serif; font-weight: 500; font-size: 22px">השאירי פרטים ואחזור אלייך</span>
+<form class="rv" name="contact" method="POST" data-contact style="flex: 999 1 420px; min-width: 0; background: #FFFDFB; color: #3B2925; border-radius: 30px; padding: 44px 40px; display: flex; flex-direction: column; gap: 24px">
+<p style="display:none"><label>לא למילוי<input name="bot-field"></label></p><span style="font-family: Fredoka, sans-serif; font-weight: 500; font-size: 22px">השאירי פרטים ואחזור אלייך</span>
 <label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; color: #7A6259">שם<input type="text" name="name" required autocomplete="name" style="font: inherit; font-size: 18px; color: #3B2925; padding: 12px 16px; border: 1px solid #E6D6CC; border-radius: 14px; background: #FAF6F1"></label>
 <label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; color: #7A6259">טלפון<input type="tel" name="phone" required autocomplete="tel" style="font: inherit; font-size: 18px; color: #3B2925; padding: 12px 16px; border: 1px solid #E6D6CC; border-radius: 14px; background: #FAF6F1"></label>
 <label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; color: #7A6259">מה מעסיק אותך? (לא חובה)<textarea name="message" rows="3" style="font: inherit; font-size: 18px; color: #3B2925; padding: 12px 16px; border: 1px solid #E6D6CC; border-radius: 14px; background: #FAF6F1; resize: vertical"></textarea></label>
@@ -701,5 +701,12 @@ c.componentDidMount();
 if(/[?&]gift=1/.test(location.search))setTimeout(function(){v.openPopup();},600);
 })();
 </script>
+<script>/* טופסי יצירת קשר -> מערכת הדיוור (במקום נטליפיי) */
+document.addEventListener('submit',function(e){var f=e.target;if(!f||!f.hasAttribute('data-contact'))return;e.preventDefault();
+var fd=new FormData(f);var b=new URLSearchParams();fd.forEach(function(v,k){b.append(k,v)});b.set('a','contact');b.set('form-name',f.getAttribute('name')||'contact');b.set('page',location.pathname);
+var btn=f.querySelector('[type=submit],button');if(btn){btn.disabled=true;}
+var done=function(){location.href='/thanks.html'};
+try{fetch('https://script.google.com/macros/s/AKfycbz3rMYCIxHQuo4hkiiHKEVAuQ_nszwJBhccpDOiPMbiR5OxadIP7Lf-8mfIM1ImYFCKOQ/exec',{method:'POST',mode:'no-cors',body:b}).then(done,done);}catch(x){done()}
+setTimeout(done,6000);},true);</script>
 </body>
 </html>
