@@ -87,6 +87,9 @@ form { background: rgba(20,24,50,.18); }
 .hint { margin: 0; color: var(--muted); font-size: 0.98rem; max-width: 34ch; text-wrap: balance; }
 
 .sky { position: relative; flex: 1; min-height: 0; }
+.app.kb .top, .app.kb .meta { display: none; }
+.app.kb .bar { padding-block: 8px 10px; }
+.app.kb .mbtn { display: none; }
 
 .cloud { position: absolute; top: 0; left: 0; will-change: transform, opacity, filter; pointer-events: none; }
 .cloud .body {
@@ -456,6 +459,24 @@ button:focus-visible { outline: 1px solid var(--gold); outline-offset: 3px; }
     }
     requestAnimationFrame(tick);
   }
+
+  /* ---------- mobile keyboard: keep the sky in view ---------- */
+  (function () {
+    const vv = window.visualViewport;
+    const app = document.querySelector('.app');
+    if (!vv || !app) return;
+    function fit() {
+      const kb = window.innerHeight - vv.height > 120;
+      app.classList.toggle('kb', kb);
+      app.style.height = kb ? vv.height + 'px' : '';
+      app.style.transform = kb ? 'translateY(' + vv.offsetTop + 'px)' : '';
+      const H = sky.clientHeight;
+      clouds.forEach(c => { c.y = Math.max(8, Math.min(H - c.h - 8, c.y)); });
+    }
+    vv.addEventListener('resize', fit);
+    vv.addEventListener('scroll', fit);
+    input.addEventListener('blur', () => setTimeout(fit, 300));
+  })();
 
   /* ---------- intro ---------- */
   const intro = document.getElementById('intro');
