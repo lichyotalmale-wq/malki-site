@@ -69,8 +69,7 @@
       var row = document.createElement('a');
       row.href = href;
       var t = document.createElement('b'); t.textContent = a.textContent.trim();
-      var s = document.createElement('span'); s.textContent = SUBS[k] || '';
-      row.appendChild(t); row.appendChild(s);
+      row.appendChild(t);
       var file = href.split('#')[0].replace(/^\//, '');
       if (file && (file === here || file + '.html' === here || here === file.replace('.html', ''))) row.className = 'cur';
       list.appendChild(row);
